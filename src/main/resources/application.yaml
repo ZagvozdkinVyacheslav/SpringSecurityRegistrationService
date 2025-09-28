@@ -1,0 +1,61 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: LearnService
+  datasource:
+    url: jdbc:postgresql://localhost:5432/authbase
+    username: def_user
+    password: def_pass
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 2
+      connection-timeout: 30000
+      idle-timeout: 600000
+      max-lifetime: 1800000
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: none
+    show-sql: false
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+    baseline-on-migrate: true
+    validate-on-migrate: true
+    clean-disabled: true
+    table: flyway_schema_history
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: zagvozdkinsmtpmailsender@gmail.com
+    password: qagm aqxq rcwu zjnv
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info, metrics
+  endpoint:
+    health:
+      show-details: always
+
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    enabled: true
+
+jwt:
+#  VRNWmUzFMXZV6vJQ7ipqbdESLzeLeSBW pass
+  base64-secret: VlJOV21VekZNWFpWNnZKUTdpcHFiZEVTTHplTGVTQlc=
+  expiration: 3600000
+
+#
